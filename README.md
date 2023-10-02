@@ -38,13 +38,10 @@
 
 #### Login API
 
-```json
+```graphql
 mutation {
-  login(loginUserInput: {
-    username: "user123",
-    password: "password123"
-  }) {
-    user_id,
+  login(loginUserInput: { username: "user123", password: "password123" }) {
+    user_id
     username
     name
     access_token
@@ -54,17 +51,19 @@ mutation {
 
 #### Register User API
 
-```json
+```graphql
 mutation {
-  registerUser(registerUserInput: {
-    username: "user123",
-    password: "password123",
-    name: "Juan dela Cruz"
-  }) {
-    user_id,
-    username,
-    name,
-    created_at,
+  registerUser(
+    registerUserInput: {
+      username: "user123"
+      password: "password123"
+      name: "Juan dela Cruz"
+    }
+  ) {
+    user_id
+    username
+    name
+    created_at
     updated_at
   }
 }
@@ -72,7 +71,7 @@ mutation {
 
 #### List All Items
 
-```json
+```graphql
 query {
   findAll {
     item_id,
@@ -94,7 +93,7 @@ Headers:
 
 #### Get an Item
 
-```json
+```graphql
 query {
   findOne(item_id: 3) {
     item_id,
@@ -115,7 +114,7 @@ Headers:
 
 #### Create an Item
 
-```json
+```graphql
 mutation {
   registerItem(registerItemInput: {
     category: "cat1",
@@ -141,7 +140,7 @@ Headers:
 
 #### Update an Item
 
-```json
+```graphql
 mutation {
   updateItem(updateItemInput: {
     item_id: 2,
@@ -172,14 +171,14 @@ Headers:
 1. After starting up the Postgres and pgAdmin services, access the PgAdmin portal: [http://localhost:5050/](http://localhost:5050/)
 2. Login using the default admin credentials:
 
-```json
+```
 Email: admin@admin.com
 Password: admin
 ```
 
 3. To view all the databases, create a new server with the following values:
 
-```json
+```
 Name: nest-postgres
 Host Name/Address: localhost
 Port: 5432
