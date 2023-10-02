@@ -34,8 +34,8 @@ services:
   server:
     build:
       context: .
-      dockerfile: ./nest-server/Dockerfile
-    container_name: nest-server
+      dockerfile: ./nest-server-v2/Dockerfile
+    container_name: nest-server-v2
     environment:
       - POSTGRES_HOST=postgres
     ports:
@@ -43,7 +43,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./nest-server/:/app/
+      - ./nest-server-v2/:/app/
 
 volumes:
   local_pgdata:

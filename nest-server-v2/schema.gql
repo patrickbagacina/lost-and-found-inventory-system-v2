@@ -1,0 +1,116 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  """ID of the user"""
+  user_id: Int!
+
+  """Name of the user"""
+  name: String!
+
+  """Account username"""
+  username: String!
+
+  """Account password"""
+  password: String!
+
+  """Date created"""
+  created_at: String!
+
+  """Date last updated"""
+  updated_at: String!
+  access_token: String!
+}
+
+type LostItem {
+  """ID of the lost item"""
+  item_id: Int!
+
+  """Category of the item"""
+  category: String!
+
+  """Type of item"""
+  item_type: String!
+
+  """Item brand"""
+  brand: String!
+
+  """Item description"""
+  description: String!
+
+  """Item status"""
+  is_claimed: Boolean!
+
+  """Date created"""
+  created_at: String!
+
+  """Date last updated"""
+  updated_at: String!
+}
+
+type Query {
+  getUser: User!
+  findAll: [LostItem!]!
+  findOne(item_id: Int!): LostItem!
+}
+
+type Mutation {
+  login(loginUserInput: LoginUserInput!): User!
+  registerUser(registerUserInput: RegisterUserInput!): User!
+  registerItem(registerItemInput: RegisterItemInput!): LostItem!
+  updateItem(updateItemInput: UpdateItemInput!): LostItem!
+}
+
+input LoginUserInput {
+  """Account username"""
+  username: String!
+
+  """Account password"""
+  password: String!
+}
+
+input RegisterUserInput {
+  """Account username"""
+  username: String!
+
+  """Account password"""
+  password: String!
+
+  """Name of user"""
+  name: String!
+}
+
+input RegisterItemInput {
+  """Item category"""
+  category: String!
+
+  """Item type"""
+  item_type: String!
+
+  """Item brand"""
+  brand: String!
+
+  """Item description"""
+  description: String!
+}
+
+input UpdateItemInput {
+  """Item category"""
+  item_id: Int!
+
+  """Item category"""
+  category: String!
+
+  """Item type"""
+  item_type: String!
+
+  """Item brand"""
+  brand: String!
+
+  """Item description"""
+  description: String!
+
+  """Item status"""
+  is_claimed: Boolean!
+}
