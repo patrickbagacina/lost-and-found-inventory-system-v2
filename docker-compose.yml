@@ -36,6 +36,7 @@ services:
       context: .
       dockerfile: ./nest-server-v2/Dockerfile
     container_name: nest-server-v2
+    restart: unless-stopped
     environment:
       - POSTGRES_HOST=postgres
     ports:
@@ -44,6 +45,19 @@ services:
       - postgres
     volumes:
       - ./nest-server-v2/:/app/
+
+  web:
+    build:
+      context: .
+      dockerfile: ./flutter_admin/Dockerfile
+    restart: unless-stopped
+    container_name: flutter-admin
+    ports:
+      - "$WEB_PORT:80"
+    depends_on:
+      - server
+    volumes:
+      - ./flutter_admin/:/app/
 
 volumes:
   local_pgdata:
